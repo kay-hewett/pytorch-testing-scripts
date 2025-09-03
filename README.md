@@ -1,18 +1,35 @@
-# PyTorch Testing Scripts
+# PyTorch Testing Scripts & Development Tools
 
-A collection of PyTorch testing and performance benchmarking scripts.
+A comprehensive collection of PyTorch testing, performance benchmarking scripts, configuration files, and development tools.
 
 ## 🚀 Features
 
 - **PyTorch Installation Validation**: Comprehensive testing of PyTorch functionality  
 - **GPU vs CPU Performance**: Benchmarking matrix operations and neural network training
 - **Cross-Platform Support**: Works with CUDA (NVIDIA) and MPS (Apple Metal)
+- **Development Tools**: PyTorch build and configuration utilities
+- **Code Quality**: MyPy type checking and linting configurations
 - **Automated Testing**: Easy-to-run scripts for validating your PyTorch setup
 
-## 📁 Files
+## 📁 Repository Contents
 
-- `test_pytorch.py`: Complete PyTorch functionality test
-- `cuda_test.py`: GPU vs CPU performance comparison tool
+### 🧪 Core Testing Scripts
+- **test_pytorch.py**: Complete PyTorch functionality validation
+- **cuda_test.py**: GPU vs CPU performance comparison tool
+
+### ⚙️ Configuration Files  
+- **mypy.ini**: MyPy type checking configuration for PyTorch development
+- **pyproject.toml**: Python project configuration and build settings
+- **requirements.txt**: Python dependencies for PyTorch projects
+- **.flake8**: Python code style and linting configuration
+- **pytest.ini**: PyTest testing framework configuration
+
+### 🛠️ Development Tools
+- **tools/vscode_settings.py**: VSCode configuration helper
+- **tools/build_libtorch.py**: LibTorch build utilities
+
+### 📖 Documentation
+- **AGENTS.md**: AI agent development guidelines
 
 ## 🛠️ Usage
 
@@ -21,30 +38,16 @@ A collection of PyTorch testing and performance benchmarking scripts.
 python test_pytorch.py
 ```
 
-### GPU Performance Benchmark  
+### GPU Performance Comparison  
 ```bash
 python cuda_test.py
 ```
 
-## 📋 Requirements
+## 🔧 Requirements
 
-- Python 3.9+
-- PyTorch 2.0+
-- Optional: CUDA toolkit (for NVIDIA GPUs)
-- Optional: macOS 12.3+ (for Apple Metal support)
+- Python 3.8+
+- PyTorch 1.8+
+- CUDA toolkit (optional, for NVIDIA GPU support)
+- Apple Silicon Mac (optional, for MPS support)
 
-## 🔧 Installation
-
-1. Install PyTorch:
-   ```bash
-   pip install torch torchvision torchaudio
-   ```
-
-2. Run the tests:
-   ```bash
-   python test_pytorch.py
-   python cuda_test.py
-   ```
-
----
-Created with ❤️ for the PyTorch community
+This repository provides everything you need to test, benchmark, and develop with PyTorch! 🚀
