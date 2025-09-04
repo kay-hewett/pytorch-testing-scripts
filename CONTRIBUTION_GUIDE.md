@@ -1,6 +1,28 @@
-# PyTorch Testing Scripts - Contribution Guide
+# Executive Summary
 
-Welcome to the PyTorch Testing Scripts repository! This guide will help you contribute effectively to our collection of PyTorch performance benchmarking and testing utilities.
+GPUs drive the artificial intelligence boom as the accelerator of modern supercomputing and the driver of hyperscaler data centers.  How does the speed of GPU compare computationally to CPU?  As a test case, I compared the computational efficiency of CPU vs GPU on an Apple Mac M4.  The key finding was a performance crossover at ~1500x1500 matrices.  The CPU outperforms GPU by 2-4x for matrices smaller than 1000x1000.   The GPU advantages were realized at scale because the parallel computational benefits overcome the initialization costs.  The critical performance crossover for GPUs occurs at 2000x2000 matrices with 2-2.3x 
+
+**Key Finding:** 
+Performance Crossover at ~1500x1500 Matrices
+CPU Advantage (Small Matrices):
+
+Matrix sizes ≤ 1000x1000: CPU outperforms GPU by 2-4x
+Root cause: GPU initialization overhead exceeds computation benefits
+Example: 500x500 matrices - CPU: 0.0002s vs MPS: 0.0007s (CPU 3.5x faster)
+GPU Advantage (Large Matrices):
+
+Matrix sizes ≥ 2000x2000: GPU outperforms CPU by 2-2.3x
+Root cause: Parallel computation benefits overcome initialization costs
+Example: 4000x4000 matrices - CPU: 0.0429s vs MPS: 0.0194s (GPU 2.2x faster)
+
+**Business Implications**
+The most effective use cases for CPU include Small-Scale Operations such as rapid prototyping, small batch inference, edge devices.  The cost efficiency does not need expensive GPU hardware, and the latency advantage is immediate execution without GPU warmup.   The cache efficiency of smaller data sets leverages no memory transfer causing latency. 
+
+For Large-Scale Operations the GPU can be leveraged for training, large batch processing, production inference.  The throughput advantage is a 2-3x speedup for matrices >2000x2000.  For larger data sets, the GPU massively parallizes thousands of cores.
+
+**Development Strategy:**
+
+An adaptive approach to the device selection could benchmark to the specific workload where the results vary by model architecture.  A hybrid approach of CPU for small operations and GPU for large operations could optimize the performance advantages of the devices.  The production deployment platforms might prioritize CPU optimization for edge/mobile devices with small, discrete transcations.  Cloud, server and hyperscalers could invest in GPU acceleration particularly moderate matrix workloads.  This pattern is consistent across Apple Silicon (MPS), NVIDIA CUDA, and AMD ROCm platforms, making it a fundamental consideration for the deployment strategies.
 
 ## 📋 Table of Contents
 
@@ -200,9 +222,6 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-## 📤 Submission Process
-
-### Pull Request Guidelines
 
 1. **Branch Naming**: Use descriptive names
    ```bash
@@ -244,11 +263,6 @@ We maintain the same quality standards as PyTorch core:
 - Performance optimization
 - Robust testing coverage
 
----
-
-**Thank you for contributing to PyTorch Testing Scripts!** Your contributions help the entire PyTorch community build better, faster applications. 🚀
-
-*Based on PyTorch PR #162107 (commit 6eb65749b7fc286ad3434a0faaf964f02f245f8e)*
 
 ## 📊 Expected Performance Results
 
