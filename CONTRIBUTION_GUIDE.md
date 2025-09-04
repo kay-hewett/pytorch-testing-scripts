@@ -1,29 +1,29 @@
 # Executive Summary
 
-GPUs drive the artificial intelligence boom as the accelerator of modern supercomputing and the driver of hyperscaler data centers.  How does the speed of GPU compare computationally to CPU?  As a test case, I compared the computational efficiency of CPU vs GPU on an Apple Mac M4.  The key finding was a performance crossover at ~1500x1500 matrices.  The CPU outperforms GPU by 2-4x for matrices smaller than 1000x1000.   The GPU advantages were realized at scale because the parallel computational benefits overcome the initialization costs.  The critical performance crossover for GPUs occurs at 2000x2000 matrices with 2-2.3x 
+**GPU Performance in Modern Computing**
 
-**Key Finding:** 
-Performance Crossover at ~1500x1500 Matrices
-CPU Advantage (Small Matrices):
+In the realm of artificial intelligence and supercomputing, GPUs play a pivotal role as accelerators driving innovation in hyperscaled data centers. But how does the computational speed of GPUs compare to CPUs? A performance test was conducted comparing the efficiency of CPU versus GPU on an Apple Mac M4, revealing intriguing insights.
 
-Matrix sizes ≤ 1000x1000: CPU outperforms GPU by 2-4x
-Root cause: GPU initialization overhead exceeds computation benefits
-Example: 500x500 matrices - CPU: 0.0002s vs MPS: 0.0007s (CPU 3.5x faster)
-GPU Advantage (Large Matrices):
+**Key Insight:**  
+A significant performance shift occurs around the ~1500x1500 matrix size. An adaptive approach to the device selection could successfully build the model architecture. A hybrid approach of CPU for small operations and GPU for large operations could optimize the performance advantages of the devices. 
 
-Matrix sizes ≥ 2000x2000: GPU outperforms CPU by 2-2.3x
-Root cause: Parallel computation benefits overcome initialization costs
-Example: 4000x4000 matrices - CPU: 0.0429s vs MPS: 0.0194s (GPU 2.2x faster)
+**CPU Superiority (Smaller Matrices):**  
+- For matrix sizes up to 1000x1000, CPUs outperform GPUs by 2-4 times.
+- This is attributed to the overhead of GPU initialization surpassing its computational benefits.
+- For instance, in a scenario with 500x500 matrices, CPUs performed 3.5 times faster than GPUs.
 
-**Business Implications**
-The most effective use cases for CPU include Small-Scale Operations such as rapid prototyping, small batch inference, edge devices.  The cost efficiency does not need expensive GPU hardware, and the latency advantage is immediate execution without GPU warmup.   The cache efficiency of smaller data sets leverages no memory transfer causing latency. 
+**GPU Dominance (Medium and Larger Matrices):**  
+- As matrix sizes exceed 2000x2000, GPUs outperform CPUs by 2-2.3 times.
+- The parallel computational advantages of GPUs prove superior, overcoming the initial costs.
+- As an example for 4000x4000 matrices, GPUs were 2.2 times faster than CPUs.
 
-For Large-Scale Operations the GPU can be leveraged for training, large batch processing, production inference.  The throughput advantage is a 2-3x speedup for matrices >2000x2000.  For larger data sets, the GPU massively parallizes thousands of cores.
+**Implications for Business:**  
+- **CPU Applications:** Ideal for small-scale tasks like rapid prototyping, edge devices, and small batch inference because of the cost efficiency and immediate execution without warmup.  The smaller data sets cache efficiently without memory transfers.
+- **GPU Applications:** Suited for operations that optimize the performance advantages of the devices such as training, batch processing, and production inference.  The throughput advantage is 2-3 times speed.
 
-**Development Strategy:**
-
-An adaptive approach to the device selection could benchmark to the specific workload where the results vary by model architecture.  A hybrid approach of CPU for small operations and GPU for large operations could optimize the performance advantages of the devices.  The production deployment platforms might prioritize CPU optimization for edge/mobile devices with small, discrete transcations.  Cloud, server and hyperscalers could invest in GPU acceleration particularly moderate matrix workloads.  This pattern is consistent across Apple Silicon (MPS), NVIDIA CUDA, and AMD ROCm platforms, making it a fundamental consideration for the deployment strategies.
-
+**Strategic Deployment:**  
+- **Adaptive Device Selection:** Tailor the device choice to specific workloads that optimize performance based on model architecture.
+- **Hybrid Approach:** Select CPU for small tasks and GPU for larger operations harnessing the strengths of both devices effectively.
 
 ## 📋 Table of Contents
 
