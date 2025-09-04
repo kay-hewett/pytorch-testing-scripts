@@ -1,6 +1,6 @@
-# PyTorch Testing Scripts - Contribution Guide
+# PyTorch Testing Scripts - Executive Summary
 
-Welcome to the PyTorch Testing Scripts repository! This guide will help you contribute effectively to our collection of PyTorch performance benchmarking and testing utilities.
+Which is faster for 
 
 ## 📋 Table of Contents
 
@@ -200,9 +200,6 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-## 📤 Submission Process
-
-### Pull Request Guidelines
 
 1. **Branch Naming**: Use descriptive names
    ```bash
@@ -244,11 +241,6 @@ We maintain the same quality standards as PyTorch core:
 - Performance optimization
 - Robust testing coverage
 
----
-
-**Thank you for contributing to PyTorch Testing Scripts!** Your contributions help the entire PyTorch community build better, faster applications. 🚀
-
-*Based on PyTorch PR #162107 (commit 6eb65749b7fc286ad3434a0faaf964f02f245f8e)*
 
 ## 📊 Expected Performance Results
 
