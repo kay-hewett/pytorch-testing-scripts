@@ -1,8 +1,27 @@
-# PyTorch Testing Scripts - Contribution Guide
+# Executive Summary
 
-Welcome to the PyTorch Testing Scripts repository! This guide will help you contribute effectively to our collection of PyTorch performance benchmarking and testing utilities.
+**GPU Performance in Modern Computing**
 
-## 📋 Table of Contents
+
+In the realm of artificial intelligence and supercomputing, GPUs play a pivotal role as accelerators driving innovation in hyperscaled data centers. But how does the computational speed of GPUs compare to CPUs? A performance test was conducted comparing the efficiency of CPU versus GPU on an Apple Mac M4, revealing intriguing insights.
+
+**Key Insight:**  
+A significant performance shift occurs around the ~1500x1500 matrix size. An adaptive approach to the device selection could successfully build the model architecture. A hybrid approach of CPU for small operations and GPU for large operations could optimize the performance advantages of the devices. 
+
+**CPU Superiority (Smaller Matrices):**  
+For matrix sizes up to 1000x1000, CPUs outperform GPUs by 2-4 times.  This is attributed to the overhead of GPU initialization surpassing its computational benefits.  For instance, in a scenario with 500x500 matrices, CPUs performed 3.5 times faster than GPUs.
+
+**GPU Dominance (Medium and Larger Matrices):**  
+As matrix sizes exceed 2000x2000, GPUs outperform CPUs by 2-2.3 times.  The parallel computational advantages of GPUs prove superior, overcoming the initial costs.  As an example for 4000x4000 matrices, GPUs were 2.2 times faster than CPUs.
+
+**Implications for Business:**  
+- **CPU Applications:** Ideal for small-scale tasks like rapid prototyping, edge devices, and small batch inference because of the cost efficiency and immediate execution without warmup.  The smaller data sets cache efficiently without memory transfers.
+- **GPU Applications:** Suited for operations that optimize the performance advantages of the devices such as training, batch processing, and production inference.  The throughput advantage is 2-3 times speed.
+
+**Strategic Deployment:**  
+- **Adaptive Device Selection:** Tailor the device choice to specific workloads that optimize performance based on model architecture.
+- **Hybrid Approach:** Select CPU for small tasks and GPU for larger operations harnessing the strengths of both devices effectively.
+
 
 - [Overview](#overview)
 - [Getting Started](#getting-started)
@@ -200,9 +219,6 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-## 📤 Submission Process
-
-### Pull Request Guidelines
 
 1. **Branch Naming**: Use descriptive names
    ```bash
@@ -244,11 +260,6 @@ We maintain the same quality standards as PyTorch core:
 - Performance optimization
 - Robust testing coverage
 
----
-
-**Thank you for contributing to PyTorch Testing Scripts!** Your contributions help the entire PyTorch community build better, faster applications. 🚀
-
-*Based on PyTorch PR #162107 (commit 6eb65749b7fc286ad3434a0faaf964f02f245f8e)*
 
 ## 📊 Expected Performance Results
 
